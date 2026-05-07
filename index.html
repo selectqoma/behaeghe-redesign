@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tandartsenpraktijk Behaeghe – Ingelmunster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:   #1c4237;
+      --green-md:#2a5f51;
+      --gold:    #c8a96e;
+      --cream:   #f7f2eb;
+      --dark:    #1a1814;
+      --mid:     #6b6560;
+      --white:   #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%;
+      height: 72px;
+      background: rgba(28,66,55,0.96);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .logo span { color: var(--gold); }
+    nav ul { display: flex; gap: 2.25rem; list-style: none; }
+    nav a {
+      text-decoration: none;
+      font-size: 0.825rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--gold); }
+    .nav-tel {
+      color: var(--gold) !important;
+      border: 1px solid rgba(200,169,110,0.4);
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      transition: background .2s !important;
+    }
+    .nav-tel:hover { background: rgba(200,169,110,0.15) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1600&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.45);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 0 8%;
+      max-width: 720px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      border-left: 2px solid var(--gold);
+      padding-left: 0.75rem;
+    }
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-content p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .hero-cta:hover { background: #d4b87a; transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 48px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--green);
+      padding: 2.5rem 6%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 1rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+    }
+    .strip-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(200,169,110,0.2);
+      border: 1px solid rgba(200,169,110,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .strip-item strong { display: block; color: var(--white); font-size: 0.95rem; }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .about-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-image::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 70%, var(--white) 100%);
+    }
+    .about-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 6rem 6rem 4rem;
+      background: var(--white);
+    }
+    .label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    .about-text p {
+      color: var(--mid);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      max-width: 420px;
+    }
+    .about-text blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--green);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+      line-height: 1.4;
+    }
+
+    /* ── SERVICES ── */
+    #diensten {
+      background: var(--cream);
+      padding: 96px 6%;
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    .section-header p { color: var(--mid); font-size: 0.95rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: #e0dad0;
+    }
+    .service-item {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s;
+    }
+    .service-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .service-item:hover { background: #fdfaf6; }
+    .service-item:hover::before { transform: scaleX(1); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: rgba(200,169,110,0.2);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .service-item h3 {
+      font-size: 1rem; font-weight: 500;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .service-item p { font-size: 0.85rem; color: var(--mid); }
+
+    /* ── REGION BANNER ── */
+    .region {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 6%;
+      background-image: url('https://images.unsplash.com/photo-1588776814546-ec7e533e9248?w=1400&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    .region::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(28,66,55,0.88);
+    }
+    .region-content {
+      position: relative; z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .region-content .label { color: var(--gold); }
+    .region-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin: 0.5rem 0 1.5rem;
+    }
+    .region-content p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-size: 0.95rem; }
+    .towns {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+    }
+    .town-tag {
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.4);
+      color: var(--gold);
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 96px 6%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-left .label { margin-bottom: 1rem; }
+    .contact-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    .contact-row {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #ece8e0;
+    }
+    .contact-row:first-of-type { border-top: 1px solid #ece8e0; }
+    .c-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--cream);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-row span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--mid); display: block; margin-bottom: 0.2rem; }
+    .contact-row a, .contact-row p {
+      font-size: 1rem; color: var(--dark); text-decoration: none; font-weight: 500;
+    }
+    .contact-row a:hover { color: var(--green); }
+    .call-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--green); color: var(--white);
+      padding: 1rem 2rem; border-radius: 6px;
+      font-weight: 500; font-size: 0.95rem; text-decoration: none;
+      margin-top: 2rem;
+      transition: background .2s;
+    }
+    .call-btn:hover { background: var(--green-md); }
+    .map-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .map-wrap iframe { display: block; width: 100%; height: 420px; border: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 2.5rem 6%;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; color: var(--white);
+    }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about { grid-template-columns: 1fr; }
+      .about-image { height: 340px; }
+      .about-image::after { background: linear-gradient(to bottom, transparent 70%, var(--white) 100%); }
+      .about-text { padding: 3rem; }
+      .section-header { grid-template-columns: 1fr; gap: 1rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      #contact { grid-template-columns: 1fr; gap: 3rem; }
+      nav ul { display: none; }
+    }
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .intro-strip { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Behaeghe <span>&</span> Praktijk</a>
+  <ul>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#over">Over ons</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:051308962" class="nav-tel">051 30 89 62</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Tandartspraktijk · Ingelmunster</span>
+    <h1>Met <em>passie</em><br/>voor uw gebit</h1>
+    <p>Wij luisteren naar uw wensen en stellen ons behandelplan daarop af. Persoonlijke zorg — van eenvoudig tot complex.</p>
+    <a href="tel:051308962" class="hero-cta">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Afspraak maken
+    </a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STRIP -->
+<div class="intro-strip">
+  <div class="strip-item">
+    <div class="strip-icon">🦷</div>
+    <div><strong>Eenvoudig tot complex</strong>Alle tandheelkundige behandelingen</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">👂</div>
+    <div><strong>Luisterend oor</strong>Aangepast behandelplan per patiënt</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">📍</div>
+    <div><strong>Ingelmunster</strong>Weststraat 7, centraal gelegen</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">📞</div>
+    <div><strong>Op afspraak</strong>051 30 89 62</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="over" class="about">
+  <div class="about-image">
+    <img
+      src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=85&auto=format&fit=crop"
+      alt="Tandarts aan het werk"
+    />
+  </div>
+  <div class="about-text">
+    <p class="label">Over de praktijk</p>
+    <h2>Piet Behaeghe —<br/>tandarts met hart</h2>
+    <blockquote>"Een tandartspraktijk in Ingelmunster, met passie voor het vak."</blockquote>
+    <p>Bij Behaeghe staat de patiënt centraal. We nemen de tijd om naar uw wensen te luisteren en vertalen die naar een behandelplan dat bij u past — niet één maat voor iedereen.</p>
+    <p>Of u nu voor een routinecontrole komt of een complexe restauratie nodig heeft: u bent hier in goede handen.</p>
+    <a href="tel:051308962" class="call-btn">
+      Bel voor een afspraak &nbsp;→
+    </a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="diensten">
+  <div class="section-header">
+    <div>
+      <p class="label">Wat wij doen</p>
+      <h2>Volledige tandheelkundige zorg</h2>
+    </div>
+    <p>Van een eenvoudige reiniging tot een volledige restauratie — wij bieden de zorg die u nodig heeft, afgestemd op uw situatie.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <h3>Preventie & Controle</h3>
+      <p>Regelmatige controles en professionele reiniging om problemen voor te zijn.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <h3>Conserverende zorg</h3>
+      <p>Vullingen en behandelingen om uw natuurlijke tanden maximaal te behouden.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <h3>Endodontologie</h3>
+      <p>Wortelkanaalbehandelingen bij infecties of ernstige tandbederf.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <h3>Prothese</h3>
+      <p>Verwijderbare en vaste oplossingen voor ontbrekende tanden, op maat gemaakt.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <h3>Kronen & Bruggen</h3>
+      <p>Duurzame vaste protheses die uw gebit functioneel en esthetisch herstellen.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <h3>Chirurgische ingrepen</h3>
+      <p>Extracties, implantaten en andere kleine chirurgische behandelingen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGION BANNER -->
+<div class="region">
+  <div class="region-content">
+    <p class="label">Regio</p>
+    <h2>Uw lokale tandarts</h2>
+    <p>Wij verwelkomen patiënten uit Ingelmunster en de omliggende gemeenten. Vertrouwd, dichtbij, persoonlijk.</p>
+    <div class="towns">
+      <span class="town-tag">Ingelmunster</span>
+      <span class="town-tag">Izegem</span>
+      <span class="town-tag">Oostrozebeke</span>
+      <span class="town-tag">Meulebeke</span>
+      <span class="town-tag">Lendelede</span>
+      <span class="town-tag">Aardooie</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <p class="label">Contact</p>
+    <h2>Afspraak maken</h2>
+
+    <div class="contact-row">
+      <div class="c-icon">📞</div>
+      <div>
+        <span>Telefoon</span>
+        <a href="tel:051308962">051 30 89 62</a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="c-icon">📍</div>
+      <div>
+        <span>Adres</span>
+        <p>Weststraat 7<br/>8770 Ingelmunster</p>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="c-icon">🕐</div>
+      <div>
+        <span>Raadpleging</span>
+        <p>Enkel op afspraak</p>
+      </div>
+    </div>
+
+    <a href="tel:051308962" class="call-btn">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Bel 051 30 89 62
+    </a>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.0!2d3.2617!3d50.9253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c33f44f8e5d6a1%3A0x0!2sWeststraat%207%2C%208770%20Ingelmunster!5e0!3m2!1snl!2sbe!4v1"
+      allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Locatie Tandartsenpraktijk Behaeghe">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Tandartsenpraktijk Behaeghe</span>
+  <span>Weststraat 7, 8770 Ingelmunster</span>
+  <span><a href="tel:051308962">051 30 89 62</a></span>
+</footer>
+
+</body>
+</html>
