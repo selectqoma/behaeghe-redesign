@@ -282,6 +282,68 @@
     }
     .service-item p { font-size: 0.85rem; color: var(--mid); }
 
+    /* ── TEAM ── */
+    #team {
+      padding: 96px 6%;
+      background: var(--white);
+    }
+    .team-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+    .team-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    .team-intro p { color: var(--mid); font-size: 0.95rem; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter .3s, transform .4s;
+    }
+    .team-card:hover .team-photo {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+    .team-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(28,66,55,0.95) 0%, transparent 100%);
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .team-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .team-info p {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
     /* ── REGION BANNER ── */
     .region {
       position: relative;
@@ -396,6 +458,7 @@
       .about-image::after { background: linear-gradient(to bottom, transparent 70%, var(--white) 100%); }
       .about-text { padding: 3rem; }
       .section-header { grid-template-columns: 1fr; gap: 1rem; }
+      .team-intro { grid-template-columns: 1fr; gap: 1rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       #contact { grid-template-columns: 1fr; gap: 3rem; }
       nav ul { display: none; }
@@ -413,6 +476,7 @@
   <a href="#" class="logo">Behaeghe <span>&</span> Praktijk</a>
   <ul>
     <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#team">Team</a></li>
     <li><a href="#over">Over ons</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="tel:051308962" class="nav-tel">051 30 89 62</a></li>
@@ -513,6 +577,41 @@
       <div class="service-num">06</div>
       <h3>Chirurgische ingrepen</h3>
       <p>Extracties, implantaten en andere kleine chirurgische behandelingen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-intro">
+    <div>
+      <p class="label">Het team</p>
+      <h2>De mensen achter<br/>de praktijk</h2>
+    </div>
+    <p>Persoonlijke zorg begint met mensen die u vertrouwt. Maak kennis met het team dat u elke dag met hart en vakmanschap ontvangt.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img
+        class="team-photo"
+        src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=85&auto=format&fit=crop"
+        alt="Piet Behaeghe – Tandarts"
+      />
+      <div class="team-info">
+        <h3>Piet Behaeghe</h3>
+        <p>Tandarts — zaakvoerder</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img
+        class="team-photo"
+        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=85&auto=format&fit=crop"
+        alt="Tandartsassistente"
+      />
+      <div class="team-info">
+        <h3>Het assistentieteam</h3>
+        <p>Tandartsassistenten</p>
+      </div>
     </div>
   </div>
 </section>
