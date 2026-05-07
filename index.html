@@ -76,9 +76,9 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1600&q=85&auto=format&fit=crop');
+      background-image: url('https://www.tandartsbehaeghe.be/wp-content/uploads/2020/03/Tandartsenpraktijk-PietBehaeghe-8.jpg');
       background-size: cover;
-      background-position: center 30%;
+      background-position: center 40%;
       filter: brightness(0.45);
     }
     .hero-content {
@@ -284,64 +284,91 @@
 
     /* ── TEAM ── */
     #team {
-      padding: 96px 6%;
+      padding: 96px 0 96px 6%;
       background: var(--white);
+      overflow: hidden;
     }
-    .team-intro {
+    .team-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: end;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
+      padding-right: 6%;
     }
-    .team-intro h2 {
+    .team-header h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 3vw, 2.75rem);
       line-height: 1.2;
       color: var(--dark);
     }
-    .team-intro p { color: var(--mid); font-size: 0.95rem; }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+    .team-header p { color: var(--mid); font-size: 0.95rem; }
+    .team-scroll {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 6%;
+      padding-bottom: 1.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--cream);
     }
+    .team-scroll::-webkit-scrollbar { height: 4px; }
+    .team-scroll::-webkit-scrollbar-track { background: var(--cream); }
+    .team-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
     .team-card {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
       position: relative;
       border-radius: 4px;
       overflow: hidden;
     }
     .team-photo {
       width: 100%;
-      aspect-ratio: 3/4;
+      aspect-ratio: 3/2;
       object-fit: cover;
-      object-position: top;
+      object-position: center top;
       display: block;
-      filter: grayscale(20%);
-      transition: filter .3s, transform .4s;
+      transition: transform .4s;
     }
-    .team-card:hover .team-photo {
-      filter: grayscale(0%);
-      transform: scale(1.02);
+    .team-card:hover .team-photo { transform: scale(1.03); }
+    .team-placeholder {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .team-placeholder .initial {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(200,169,110,0.5);
+      line-height: 1;
     }
     .team-info {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(28,66,55,0.95) 0%, transparent 100%);
-      padding: 3rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(28,66,55,0.97) 0%, rgba(28,66,55,0.4) 60%, transparent 100%);
+      padding: 2.5rem 1.25rem 1.25rem;
     }
     .team-info h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: var(--white);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.15rem;
     }
     .team-info p {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: var(--gold);
+      line-height: 1.4;
     }
 
     /* ── REGION BANNER ── */
@@ -349,7 +376,7 @@
       position: relative;
       overflow: hidden;
       padding: 96px 6%;
-      background-image: url('https://images.unsplash.com/photo-1588776814546-ec7e533e9248?w=1400&q=80&auto=format&fit=crop');
+      background-image: url('https://www.tandartsbehaeghe.be/wp-content/uploads/2019/10/Tandartsenpraktijk-PietBehaeghe-3.jpg');
       background-size: cover;
       background-attachment: fixed;
       background-position: center;
@@ -458,7 +485,7 @@
       .about-image::after { background: linear-gradient(to bottom, transparent 70%, var(--white) 100%); }
       .about-text { padding: 3rem; }
       .section-header { grid-template-columns: 1fr; gap: 1rem; }
-      .team-intro { grid-template-columns: 1fr; gap: 1rem; }
+      .team-header { grid-template-columns: 1fr; gap: 1rem; padding-right: 6%; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       #contact { grid-template-columns: 1fr; gap: 3rem; }
       nav ul { display: none; }
@@ -522,8 +549,8 @@
 <section id="over" class="about">
   <div class="about-image">
     <img
-      src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=85&auto=format&fit=crop"
-      alt="Tandarts aan het werk"
+      src="https://www.tandartsbehaeghe.be/wp-content/uploads/2020/03/Tandartsenpraktijk-PietBehaeghe-5.jpg"
+      alt="Tandartsenpraktijk Behaeghe"
     />
   </div>
   <div class="about-text">
@@ -583,99 +610,85 @@
 
 <!-- TEAM -->
 <section id="team">
-  <div class="team-intro">
+  <div class="team-header">
     <div>
       <p class="label">Het team</p>
       <h2>De mensen achter<br/>de praktijk</h2>
     </div>
-    <p>Een familiepraktijk met drie generaties Behaeghe en specialisten in parodontologie en endodontologie — alles onder één dak.</p>
+    <p>Een familiepraktijk met drie generaties Behaeghe, een parodontoloog, een endodontoloog en toegewijd assistentieteam.</p>
   </div>
+  <div class="team-scroll">
 
-  <!-- Dentists row -->
-  <div class="team-grid" style="margin-bottom: 1.5rem;">
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=600&q=90&auto=format&fit=crop&crop=faces"
-        alt="Piet Behaeghe"
-      />
+      <img class="team-photo"
+        src="https://www.tandartsbehaeghe.be/wp-content/uploads/2020/03/Team-piet-1.jpg"
+        alt="Piet Behaeghe" />
       <div class="team-info">
         <h3>Piet Behaeghe</h3>
         <p>Algemeen tandarts · UGent 1982<br/>Implantologie · Gerechtelijk expert</p>
       </div>
     </div>
+
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=90&auto=format&fit=crop&crop=faces"
-        alt="Elisabeth Behaeghe"
-      />
+      <img class="team-photo"
+        src="https://www.tandartsbehaeghe.be/wp-content/uploads/2020/03/Team-elisabeth-1.jpg"
+        alt="Elisabeth Behaeghe" />
       <div class="team-info">
         <h3>Elisabeth Behaeghe</h3>
         <p>Parodontoloog · KU Leuven 2012<br/>Spec. parodontologie 2015 · AZ Sint-Jan</p>
       </div>
     </div>
+
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=90&auto=format&fit=crop&crop=faces"
-        alt="Lodewijk Behaeghe"
-      />
+      <img class="team-photo"
+        src="https://www.tandartsbehaeghe.be/wp-content/uploads/2020/03/Team-Lodewijk-1.jpg"
+        alt="Lodewijk Behaeghe" />
       <div class="team-info">
         <h3>Lodewijk Behaeghe</h3>
         <p>Tandarts · Endodontoloog<br/>Spec. endodontologie 2021 · Brugge &amp; Gent</p>
       </div>
     </div>
+
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=90&auto=format&fit=crop&crop=faces"
-        alt="Robin Bourgeois"
-      />
+      <div class="team-placeholder">
+        <span class="initial">R</span>
+      </div>
       <div class="team-info">
         <h3>Robin Bourgeois</h3>
         <p>Algemeen tandarts · UGent 2021</p>
       </div>
     </div>
+
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=90&auto=format&fit=crop&crop=faces"
-        alt="Paulien Messiaen"
-      />
+      <div class="team-placeholder">
+        <span class="initial">P</span>
+      </div>
       <div class="team-info">
         <h3>Paulien Messiaen</h3>
         <p>Algemeen tandarts · KU Leuven 2023</p>
       </div>
     </div>
-  </div>
 
-  <!-- Assistants row — shown smaller, 2-up -->
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 280px)); gap: 1.5rem;">
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=560&q=90&auto=format&fit=crop&crop=faces"
-        alt="Stephanie"
-        style="aspect-ratio: 4/3;"
-      />
-      <div class="team-info" style="background: linear-gradient(to top, rgba(28,66,55,0.9) 0%, transparent 100%);">
+      <div class="team-placeholder">
+        <span class="initial">S</span>
+      </div>
+      <div class="team-info">
         <h3>Stephanie</h3>
         <p>Tandartsassistente</p>
       </div>
     </div>
+
     <div class="team-card">
-      <img
-        class="team-photo"
-        src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=560&q=90&auto=format&fit=crop&crop=faces"
-        alt="Moira"
-        style="aspect-ratio: 4/3;"
-      />
-      <div class="team-info" style="background: linear-gradient(to top, rgba(28,66,55,0.9) 0%, transparent 100%);">
+      <div class="team-placeholder">
+        <span class="initial">M</span>
+      </div>
+      <div class="team-info">
         <h3>Moira</h3>
         <p>Tandartsassistente</p>
       </div>
     </div>
+
   </div>
 </section>
 
